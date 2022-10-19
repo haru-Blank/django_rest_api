@@ -17,8 +17,7 @@ endpoint = "http://localhost:8000/api"
 
 
 get_response = requests.get(
-    endpoint, 
-    params={"name": "Djan Djan Djangooo"},
-    json={"query": "Helo World"}
+    endpoint, params={"name": "Djan Djan Djangooo"}, json={"query": "Helo World"}
 )
+
 print(get_response.json())

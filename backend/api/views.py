@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 
 from products.models import Product
-
+from products.serializers import ProductSerializer
 
 """ def api_home(request, *args, **kwargs):
     model_data = Product.objects.all().order_by("?").first()
@@ -32,10 +32,11 @@ def api_home(request, *args, **kwargs):
     """
     DRF Api View
     """
-    model_data = Product.objects.all().order_by("?").first()
+    instance = Product.objects.all().order_by("?").first()
 
     data = {}
-    if model_data:
-        data = model_to_dict(model_data, fields=[ "title", "price"])
+    if instance:
+        # data = model_to_dict(instance, fields=["title", "price", "sale_price"])
+        data = ProductSerializer(instance).data
 
     return Response(data)
